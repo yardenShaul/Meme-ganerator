@@ -4,14 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Ultimate Meme Generator</title>
 </head>
-<body>
-    <div class="main container">
+<body onload="onInit()">
+    <h1>Meme Generator</h1>
+    <div class="main-container">
+        <div class="main-gallery">
+            <div class="gallery"></div>
+        </div>
+        <div class="tools">
+            <label>
+                <input type="text" placeholder="Type your first text" id="first-text">
+                <button type="submit" onclick="onSubmitText('first-text')">Add</button>
+                <button onclick="deleteText()">❌</button>
+            </label>
+            <label>
+                <input type="text" placeholder="Type your second text" id="second-text">
+                <button type="submit" onclick="onSubmitText('second-text')">Add</button>
+                <button onclick="deleteText()">❌</button>
+            </label>
+            <div class="basic-buttons">
+                <button onclick="onChangeFontSize(this)" >increase</button>
+                <button onclick="onChangeFontSize(this)">decrease</button>
+                <button onclick="onSwicthText()">🔄</button>
+                <label>
+                    <input type="color" id="new-color" onchange="onChooseColor(this.value)">
+                </label>
+            </div>
+        </div>
+        <canvas class="main-canvas" style="height: 500px; width: 500px;"></canvas>
+        
         
     </div>
+    <button onclick="clearCanvas()">Clear</button>
     
-    <script src="/js/main.js"></script>
+    <script src="js/meme-service.js"></script>
+    <script src="js/meme-controller.js"></script>
 </body>
 </html>
