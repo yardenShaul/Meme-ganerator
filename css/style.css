@@ -60,3 +60,7 @@ h1{
     font-size: 50px;
     background: transparent;
 }
+
+button {
+    font-size: 20px;
+}

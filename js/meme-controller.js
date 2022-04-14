@@ -21,7 +21,7 @@ function onSelectImg(id) {
     addImg(id)
     setTimeout(() => {
         drawText('Type your text', 60, 30, 25)
-        drawText('Type your text', 60, 130, 25)
+        drawText('', 60, 130, 25)
     },300)
 }
 
@@ -44,17 +44,11 @@ function onSubmitText(ev) {
     let secTxt = document.querySelector('#second-text').value
     console.log(ev)
     addText([firstTxt, secTxt])
-    if (ev === 'first-text') {
-        renderMeme()
-        setTimeout(() => {
-            drawText(getMeme().lines.text[0], 60, 30, getMeme().lines.size)
-        },300)     
-    } else {
-        renderMeme()
-        setTimeout(() => {
-            drawText(getMeme().lines.text[1], 60, 130, getMeme().lines.size)
-        },300)
-    }
+    renderMeme()
+    setTimeout(() => {
+        drawText(getMeme().lines.text[0], 60, 30, getMeme().lines.size)
+        drawText(getMeme().lines.text[1], 60, 130, getMeme().lines.size)
+    },300)  
     firstTxt = ''
     secTxt = ''
 }
@@ -75,7 +69,7 @@ function drawText(txt, x, y, fontsize) {
 }
 
 function onChangeFontSize(ev) {
-    let diff = (ev.innerText === 'increase')? 5 : -5
+    let diff = (ev.innerText === '+')? 5 : -5
     changeFontSize(diff)
     clearCanvas()
     renderMeme(getMeme().selectedImgId)
@@ -88,5 +82,10 @@ function onChangeFontSize(ev) {
 }
 
 function onSwicthText(){
-    console.log('switch')
+    swicthText()
+    renderMeme(getMeme().selectedImgId)
+    setTimeout(() => {
+        drawText(getMeme().lines.text[0], 60, 30, getMeme().lines.size)
+        drawText(getMeme().lines.text[1], 60, 130, getMeme().lines.size)
+    },300)
 }

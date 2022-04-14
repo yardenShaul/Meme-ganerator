@@ -5,7 +5,7 @@ let gId = 0;
 let gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,
-    lines: {text: ['Type youe text','Type youe text'], size: 20, align: 'left', color: 'red'}
+    lines: {text: ['Type youe text','Type youe text'], size: 20, align: 'left', color: 'white'}
 }
 
 let gImgs = [
@@ -51,4 +51,10 @@ function changeFontSize(diff) {
 
 function changeColor(value) {
     gMeme.lines.color = value
+}
+
+function swicthText() {
+    var temp = gMeme.lines.text[0]
+    gMeme.lines.text[0] = gMeme.lines.text[1]
+    gMeme.lines.text[1] = temp
 }
