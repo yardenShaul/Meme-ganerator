@@ -1,11 +1,15 @@
 'use strict'
 
-let gKeywordSearch = ['happy','funny', 'sarcastic', 'animal', 'politicians','actors','film']
+// let gKeywordSearch = ['happy','funny', 'sarcastic', 'animal', 'politicians','actors','film']
+let gKeywordSearch = [
+    {word: 'happy', size: 9.5},{word: 'funny', size: 9.5},{word: 'sarcastic', size: 9.5},{word: 'animal', size: 9.5},{word: 'politicians', size: 9.5},
+    {word: 'actors', size: 9.5},{word: 'film', size: 9.5},
+]
 let gId = 0;
 let gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,
-    lines: {text: ['Type youe text','Type youe text'], size: 20, align: 'left', color: 'white'}
+    lines: {text: ['Type youe text'], size: 20, align: 'left', color: 'white'}
 }
 
 let gImgs = [
@@ -42,7 +46,7 @@ function getKeywords() {
 }
 
 function addText(txt) {
-    gMeme.lines.text = txt;
+    gMeme.lines.text.push(txt);
 }
 
 function addImg(id) {
@@ -61,4 +65,15 @@ function swicthText() {
     var temp = gMeme.lines.text[0]
     gMeme.lines.text[0] = gMeme.lines.text[1]
     gMeme.lines.text[1] = temp
+}
+
+function changeKeyWordSize(word) {
+    gKeywordSearch.forEach(key => {
+        if (key.word === word && key.size === 9.5) key.size = 25
+        else if (key.word === word) key.size = 9.5
+    })
+}
+
+function setselectedLineIdx(conut) {
+    gMeme.selectedLineIdx = conut
 }

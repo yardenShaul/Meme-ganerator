@@ -1,7 +1,7 @@
 'use strict'
 let gElCanvas = document.querySelector('.main-canvas');
 let gCtx = gElCanvas.getContext('2d');
-
+let textInsertCount
 
 function onInit() {
     renderGallery()
@@ -18,18 +18,22 @@ function renderGallery() {
 function renderKeyWords() {
     const keywordsBox = document.querySelector('.keywords')
     let strHtml = ''
-    getKeywords().forEach(keyword => strHtml += `<span id="${keyword}" href="#">${keyword}</span>`)
+    getKeywords().forEach(keyword => strHtml += `<span onclick="onSelectKeyword(this)" href="#"  style="font-size: ${keyword.size}px">${keyword.word}</span>`)
     keywordsBox.innerHTML = strHtml
 }
 
 function onSelectImg(id) {
+    document.querySelector('.main-gallery').style.display = 'none'
+    document.querySelector('.search').style.display = 'none'
+    document.querySelector('.editor-container').style.display = 'flex'
     renderMeme(id)
     addImg(id)
-    // execute drewText only when renderMeme is done:
-    setTimeout(() => {
-        drawText('Type your text', 60, 30, 25)
-        drawText('', 60, 130, 25)
-    },300)
+}
+
+function onCloseEditor() {
+    document.querySelector('.search').style.display = 'flex'
+    document.querySelector('.main-gallery').style.display = 'grid'
+    document.querySelector('.editor-container').style.display = 'none'
 }
 
 function renderMeme(id = getMeme().selectedImgId) {
@@ -46,21 +50,18 @@ function clearCanvas() {
 }
 
 
-function onSubmitText(ev) {
-    let firstTxt = document.querySelector('#first-text').value
-    let secTxt = document.querySelector('#second-text').value
-    console.log(ev)
-    addText([firstTxt, secTxt])
+function onSubmitText() {
+    let txt = document.querySelector('#insert-text').value
+    console.log()
+    addText(txt)
     renderMeme()
     setTimeout(() => {
-        drawText(getMeme().lines.text[0], 60, 30, getMeme().lines.size)
-        drawText(getMeme().lines.text[1], 60, 130, getMeme().lines.size)
+        console.log(getMeme().lines.color)
+        drawText(getMeme().lines.text[1], 60, 30, getMeme().lines.size)
     },300)  
-    firstTxt = ''
-    secTxt = ''
+    txt = ''
+    
 }
-
-
 
 function onChooseColor(value) {
     console.log(value)
@@ -70,21 +71,30 @@ function onChooseColor(value) {
 function drawText(txt, x, y, fontsize) {
     gCtx.font = `${fontsize}px impact`;
     gCtx.fillStyle = `${getMeme().lines.color}`;
+    gCtx.lineWidth = '1px'
     gCtx.strokeStyle = '#000000';
+    gCtx.textAling = 'center'
     gCtx.fillText(txt, x, y);
     gCtx.strokeText(txt, x, y);
+    // drewRectangle()
+}
+
+function drewRectangle() {
+    gCtx.beginPath();
+    gCtx.lineWidth = "6";
+    gCtx.strokeStyle = "white";
+    gCtx.rect(30, 5, 200, 35);  
+    gCtx.stroke();
 }
 
 function onChangeFontSize(ev) {
-    let diff = (ev.innerText === '+')? 5 : -5
+    let diff = (ev.innerText === 'A+')? 5 : -5
     changeFontSize(diff)
     clearCanvas()
     renderMeme(getMeme().selectedImgId)
     console.log(getMeme().lines.text[0])
-    console.log(getMeme().lines.text[1])
     setTimeout(() => {
-        drawText(getMeme().lines.text[0], 60, 30, getMeme().lines.size)
-        drawText(getMeme().lines.text[1], 60, 130, getMeme().lines.size)
+        drawText(getMeme().lines.text[1], 60, 30, getMeme().lines.size)
     },300)
 }
 
@@ -95,4 +105,15 @@ function onSwicthText(){
         drawText(getMeme().lines.text[0], 60, 30, getMeme().lines.size)
         drawText(getMeme().lines.text[1], 60, 130, getMeme().lines.size)
     },300)
+}
+
+function onSelectKeyword(ev) {
+    changeKeyWordSize(ev.innerHTML)
+    console.log(ev.innerHTML)
+    getKeywords().forEach(key => {
+        console.log(key.size)
+
+        if (key.word === ev.innerHTML) ev.style.fontSize = `${key.size}px`
+    })
+    
 }

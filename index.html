@@ -8,7 +8,7 @@
     <title>Ultimate Meme Generator</title>
 </head>
 <body onload="onInit()">
-    <header><img src="/graphics/logo.png" alt="" class="logo"></header>
+    <header><img src="/graphics/logo.png" alt="" class="upper-logo"></header>
     <div class="main-container layout">
         <div class="search">
             <form class="search-box">
@@ -19,31 +19,34 @@
         <div class="main-gallery">
             <div class="gallery"></div>
         </div>
-        <div class="tools">
-            <label>
-                <input type="text" placeholder="Type your first text" id="first-text">
-                <button type="submit" onclick="onSubmitText('first-text')">Add</button>
-                <button onclick="deleteText()">❌</button>
-            </label>
-            <label>
-                <input type="text" placeholder="Type your second text" id="second-text">
-                <button type="submit" onclick="onSubmitText('second-text')">Add</button>
-                <button onclick="deleteText()">❌</button>
-            </label>
-            <div class="basic-buttons">
-                <button onclick="onChangeFontSize(this)">+</button>
-                <button onclick="onChangeFontSize(this)">-</button>
-                <button onclick="onSwicthText()">🔄</button>
+        <div class="editor-container">
+            <button name="exit-button" onclick="onCloseEditor()">X</button>
+            <div class="tools">
                 <label>
-                    <input type="color" id="new-color" onchange="onChooseColor(this.value)">
+                    <input name="insert-text" type="text" placeholder="Type your text" id="insert-text">
+                    <button name="add-text" type="submit" onclick="onSubmitText()"></button>
                 </label>
+                <div class="basic-buttons">
+                    <button name="delete-button" onclick="clearCanvas()"></button>
+                    <button name="swich-button" onclick="onSwicthText()"></button>
+                    <button name="font+" onclick="onChangeFontSize(this)">A+</button>
+                    <button name="font-" onclick="onChangeFontSize(this)">A-</button>                   
+                    <label class="color-picker">
+                        <input type="color" id="new-color" onchange="onChooseColor(this.value)" style="display: none">
+                    </label>
+                </div>
+                </div>
+                <div class="extras">
+
             </div>
+            <canvas class="main-canvas" style="height: 275.5px; width: 270.5px;"></canvas>
         </div>
-        <canvas class="main-canvas" style="height: 500px; width: 500px;"></canvas>
+        
         
         
     </div>
-    <button onclick="clearCanvas()">Clear</button>
+    <footer><img src="/graphics/logo.png" alt="" class="logo-footer"><small>all rights reserved 2019</small></footer>
+    
     
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
