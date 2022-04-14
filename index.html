@@ -8,8 +8,14 @@
     <title>Ultimate Meme Generator</title>
 </head>
 <body onload="onInit()">
-    <h1>Meme Generator</h1>
-    <div class="main-container">
+    <header><img src="/graphics/logo.png" alt="" class="logo"></header>
+    <div class="main-container layout">
+        <div class="search">
+            <form class="search-box">
+                <input type="text" name="search" placeholder="Enter search keywords">
+            </form>
+            <div class="keywords"></div>
+        </div>
         <div class="main-gallery">
             <div class="gallery"></div>
         </div>

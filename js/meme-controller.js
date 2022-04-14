@@ -5,20 +5,27 @@ let gCtx = gElCanvas.getContext('2d');
 
 function onInit() {
     renderGallery()
-
+    renderKeyWords()
 }
 
 function renderGallery() {
     const gallery =  document.querySelector('.gallery');
     let strHtml = '';
     getgImgs().forEach(meme => strHtml += `<div class"item"><img onclick="onSelectImg(this.id)" id="${meme.id}" class=img-gallery src="${meme.url}"></div>`)
-    // console.log(strHtml)
     gallery.innerHTML = strHtml
+}
+
+function renderKeyWords() {
+    const keywordsBox = document.querySelector('.keywords')
+    let strHtml = ''
+    getKeywords().forEach(keyword => strHtml += `<span id="${keyword}" href="#">${keyword}</span>`)
+    keywordsBox.innerHTML = strHtml
 }
 
 function onSelectImg(id) {
     renderMeme(id)
     addImg(id)
+    // execute drewText only when renderMeme is done:
     setTimeout(() => {
         drawText('Type your text', 60, 30, 25)
         drawText('', 60, 130, 25)
