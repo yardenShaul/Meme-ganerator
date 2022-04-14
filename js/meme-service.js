@@ -9,7 +9,7 @@ let gId = 0;
 let gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,
-    lines: {text: ['Type youe text'], size: 20, align: 'left', color: 'white'}
+    lines: {text: ['Type your text'], size: 20, align: 'left', color: 'white'}
 }
 
 let gImgs = [
@@ -49,6 +49,10 @@ function addText(txt) {
     gMeme.lines.text.push(txt);
 }
 
+function removeText(count) {
+    gMeme.lines.text.splice(count, 1);
+}
+
 function addImg(id) {
     gMeme.selectedImgId = id;
 }
@@ -62,9 +66,9 @@ function changeColor(value) {
 }
 
 function swicthText() {
-    var temp = gMeme.lines.text[0]
-    gMeme.lines.text[0] = gMeme.lines.text[1]
-    gMeme.lines.text[1] = temp
+    var temp = gMeme.lines.text[1]
+    gMeme.lines.text[1] = gMeme.lines.text[2]
+    gMeme.lines.text[2] = temp
 }
 
 function changeKeyWordSize(word) {

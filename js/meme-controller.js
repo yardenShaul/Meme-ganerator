@@ -1,7 +1,7 @@
 'use strict'
 let gElCanvas = document.querySelector('.main-canvas');
 let gCtx = gElCanvas.getContext('2d');
-let textInsertCount
+let textInsertCount = 0
 
 function onInit() {
     renderGallery()
@@ -28,12 +28,21 @@ function onSelectImg(id) {
     document.querySelector('.editor-container').style.display = 'flex'
     renderMeme(id)
     addImg(id)
+    if (textInsertCount === 0) {
+        setTimeout(() => {
+            drawText(getMeme().lines.text[0], 60, 30, getMeme().lines.size)
+        },300)  
+    }
 }
 
 function onCloseEditor() {
     document.querySelector('.search').style.display = 'flex'
     document.querySelector('.main-gallery').style.display = 'grid'
     document.querySelector('.editor-container').style.display = 'none'
+    textInsertCount = 0;
+    onInit()
+    getMeme().lines.text = ['Type your text'];
+    getMeme().lines.color = 'white';
 }
 
 function renderMeme(id = getMeme().selectedImgId) {
@@ -55,12 +64,22 @@ function onSubmitText() {
     console.log()
     addText(txt)
     renderMeme()
-    setTimeout(() => {
-        console.log(getMeme().lines.color)
-        drawText(getMeme().lines.text[1], 60, 30, getMeme().lines.size)
-    },300)  
+    if (textInsertCount === 0) {
+        setTimeout(() => {
+            console.log(getMeme().lines.color)
+            drawText(getMeme().lines.text[1], 60, 30, getMeme().lines.size)
+            setselectedLineIdx(1)
+        },300)  
+    } else {
+        setTimeout(() => {
+            console.log(getMeme().lines.color)
+            drawText(getMeme().lines.text[1], 60, 30, getMeme().lines.size)
+            drawText(getMeme().lines.text[2], 60, 120, getMeme().lines.size)
+            setselectedLineIdx(2)
+        },300)  
+    }
     txt = ''
-    
+    textInsertCount++
 }
 
 function onChooseColor(value) {
@@ -76,16 +95,31 @@ function drawText(txt, x, y, fontsize) {
     gCtx.textAling = 'center'
     gCtx.fillText(txt, x, y);
     gCtx.strokeText(txt, x, y);
-    // drewRectangle()
+
 }
 
-function drewRectangle() {
-    gCtx.beginPath();
-    gCtx.lineWidth = "6";
-    gCtx.strokeStyle = "white";
-    gCtx.rect(30, 5, 200, 35);  
-    gCtx.stroke();
-}
+// function drewRectangle() {
+//     gCtx.beginPath();
+//     gCtx.lineWidth = "3";
+//     gCtx.strokeStyle = "white";
+//     gCtx.rect(30, 5, 200, 35);  
+//     gCtx.stroke();
+// }
+// function drewRectangle(x, y, h, w) {
+//     gCtx.beginPath();
+//     gCtx.lineWidth = "3";
+//     gCtx.strokeStyle = "white";
+//     gCtx.rect(x, y, h, w);  
+//     gCtx.stroke();
+// }
+
+// function drawLine(x, y, xEnd = 250, yEnd = 250) {
+//     gCtx.lineWidth = 2;
+//     gCtx.moveTo(x, y);
+//     gCtx.lineTo(xEnd, yEnd);
+//     gCtx.strokeStyle = 'white';
+//     gCtx.stroke();
+// }
 
 function onChangeFontSize(ev) {
     let diff = (ev.innerText === 'A+')? 5 : -5
@@ -102,18 +136,29 @@ function onSwicthText(){
     swicthText()
     renderMeme(getMeme().selectedImgId)
     setTimeout(() => {
-        drawText(getMeme().lines.text[0], 60, 30, getMeme().lines.size)
-        drawText(getMeme().lines.text[1], 60, 130, getMeme().lines.size)
+        drawText(getMeme().lines.text[1], 60, 30, getMeme().lines.size)
+        drawText(getMeme().lines.text[2], 60, 130, getMeme().lines.size)
     },300)
 }
 
 function onSelectKeyword(ev) {
     changeKeyWordSize(ev.innerHTML)
-    console.log(ev.innerHTML)
     getKeywords().forEach(key => {
-        console.log(key.size)
-
         if (key.word === ev.innerHTML) ev.style.fontSize = `${key.size}px`
     })
     
+}
+
+function onRemoveText() {
+    renderMeme()
+    if (textInsertCount === 2) {
+        setTimeout(() => {
+            drawText(getMeme().lines.text[1], 60, 30, getMeme().lines.size)
+            removeText(2)
+            textInsertCount--
+        },300)
+    } else {
+        removeText(1)
+        textInsertCount--
+    }
 }
