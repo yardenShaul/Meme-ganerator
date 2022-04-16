@@ -1,0 +1,189 @@
+
+.editor-container{
+    display: none;
+    width: 100%;
+    height: 300px;
+    background-color: #e3e3e3;
+    
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    padding: 15px;
+}
+
+input[name="insert-text"]{
+    background-color: #ffffff;
+    border: 0;
+    border-radius: 6px;
+    width: 186.5px;
+    height: 30px;
+    font-size: 10px;
+    font-family: Montserrat;
+    color: #000;
+}
+
+.color-picker{
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    background-color: #fff;
+    border: 0;
+    background-image: url('../graphics/paint-board-and-brush.png');
+    background-size: 19.6px 19.6px;
+    background-repeat: no-repeat;
+    background-position-x: 5.2px;
+    background-position-y: 5.2px;
+    cursor: pointer;
+    color: transparent;
+}
+
+.download-button{
+    background: #d60be5;
+    box-shadow: 0 8px 6px -6px #555;
+    transition: all .4s ease;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.download-button a{
+    color: inherit;
+    text-decoration: inherit;
+    font-family: inherit;
+}
+
+.share-button{
+    background: #3a0be5;
+    box-shadow: 0 8px 6px -6px #555;
+    transition: all .4s ease;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.tools{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    width: 186.5px;
+}
+
+.basic-buttons{
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.extras{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.text{
+    color: white;
+    font-size: 50px;
+    background: transparent;
+}
+
+button {
+    font-size: 10px;
+}
+
+button[name="add-text"]{
+    width: 30px;
+    height: 30px;
+    padding: 5.5px 5.2px 4.9px 5.2px;
+    border-radius: 6px;
+    background-color: #fff;
+    border: 0;
+    background-image: url('../graphics/add.png');
+    background-size: 19.6px 19.6px;
+    background-repeat: no-repeat;
+    background-position-x: 5.2px;
+    background-position-y: 5.2px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+button[name="delete-button"]{
+    width: 30px;
+    height: 30px;
+    padding: 5.5px 5.2px 4.9px 5.2px;
+    border-radius: 6px;
+    background-color: #fff;
+    border: 0;
+    background-image: url('../graphics/trash.png');
+    background-size: 19.6px 19.6px;
+    background-repeat: no-repeat;
+    background-position-x: 5.2px;
+    background-position-y: 5.2px;
+    cursor: pointer;
+}
+button[name="swich-button"]{
+    width: 30px;
+    height: 30px;
+    padding: 5.5px 5.2px 4.9px 5.2px;
+    border-radius: 6px;
+    background-color: #fff;
+    border: 0;
+    background-image: url('../graphics/up-and-down-opposite-double-arrows-side-by-side.png');
+    background-size: 19.6px 19.6px;
+    background-repeat: no-repeat;
+    background-position-x: 5.2px;
+    background-position-y: 5.2px;
+    cursor: pointer;
+}
+
+button[name="font+"]{
+    width: 30px;
+    height: 30px;
+    padding: 5.5px 5.2px 4.9px 5.2px;
+    border-radius: 6px;
+    background-color: #fff;
+    border: 0;
+    background-image: url('../graphics/increase\ font\ -\ icon.png');
+    background-size: 19.6px 19.6px;
+    background-repeat: no-repeat;
+    background-position-x: 5.2px;
+    background-position-y: 5.2px;
+    cursor: pointer;
+    color: transparent;
+}
+
+button[name="font-"]{
+    width: 30px;
+    height: 30px;
+    padding: 5.5px 5.2px 4.9px 5.2px;
+    border-radius: 6px;
+    background-color: #fff;
+    border: 0;
+    background-image: url('../graphics/decrease\ font\ -\ icon.png');
+    background-size: 19.6px 19.6px;
+    background-repeat: no-repeat;
+    background-position-x: 5.2px;
+    background-position-y: 5.2px;
+    cursor: pointer;
+    color: transparent;
+}
+
+button[name="exit-button"] {
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
+    /* opacity: 0.3; */
+    cursor: pointer;
+}
+button[name="exit-button"]:hover{
+    opacity: 1;
+}

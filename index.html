@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>Ultimate Meme Generator</title>
 </head>
 <body onload="onInit()">
@@ -28,18 +28,22 @@
                 </label>
                 <div class="basic-buttons">
                     <button name="delete-button" onclick="onRemoveText()"></button>
-                    <button name="swich-button" onclick="onSwicthText()"></button>
+                    <button name="swich-button" onclick="onSwicthSelectedText()"></button>
                     <button name="font+" onclick="onChangeFontSize(this)">A+</button>
                     <button name="font-" onclick="onChangeFontSize(this)">A-</button>                   
                     <label class="color-picker">
                         <input type="color" id="new-color" onchange="onChooseColor(this.value)" style="display: none">
                     </label>
+                    
                 </div>
-                </div>
-                <div class="extras">
-
+                <button class="share-button" onclick="uploadImg()">Share on Facebook!</button>
+                <div class="share-container"><div class="user-msg"></div></div>
+                <div class="download-button"><a href="#" onclick="downloadCanvas(this)">Download</a></div>
             </div>
-            <canvas class="main-canvas" style="height: 275.5px; width: 270.5px;"></canvas>
+            
+            <canvas class="main-canvas" style="height: 275.5px; width: 270.5px;" onclick="getCoords(event)"></canvas>
+            
+            
         </div>
         
         
@@ -50,5 +54,6 @@
     
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
+    <script src="js/upload-service.js"></script>
 </body>
 </html>

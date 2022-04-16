@@ -49,8 +49,9 @@ function addText(txt) {
     gMeme.lines.text.push(txt);
 }
 
-function removeText(count) {
-    gMeme.lines.text.splice(count, 1);
+function removeText() {
+    gMeme.selectedLineIdx
+    gMeme.lines.text.splice(gMeme.selectedLineIdx, 1);
 }
 
 function addImg(id) {
@@ -65,11 +66,13 @@ function changeColor(value) {
     gMeme.lines.color = value
 }
 
-function swicthText() {
+//Not in use:
+function swicthTextPosition() {
     var temp = gMeme.lines.text[1]
     gMeme.lines.text[1] = gMeme.lines.text[2]
     gMeme.lines.text[2] = temp
 }
+
 
 function changeKeyWordSize(word) {
     gKeywordSearch.forEach(key => {
@@ -78,6 +81,6 @@ function changeKeyWordSize(word) {
     })
 }
 
-function setselectedLineIdx(conut) {
-    gMeme.selectedLineIdx = conut
+function setselectedLineIdx(n) {
+    gMeme.selectedLineIdx = n
 }
