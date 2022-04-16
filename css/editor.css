@@ -1,13 +1,30 @@
+@media (max-width: 440px){
+    .add-text-container{
+        align-items: center;
+        
+    }
+}
+
+.add-text-container{
+    font-family: Montserrat;
+}
+
+
 
 .editor-container{
     display: none;
     width: 100%;
-    height: 300px;
+    /* height: 300px; */
     background-color: #e3e3e3;
-    
-    flex-direction: row-reverse;
-    justify-content: space-around;
-    padding: 15px;
+    flex-direction: column-reverse;
+    justify-content:center;
+    justify-items: center;
+    /* padding: 15px; */
+    margin-top: 30px;
+}
+
+.main-canvas{
+    align-self: center;
 }
 
 input[name="insert-text"]{
@@ -37,15 +54,21 @@ input[name="insert-text"]{
 }
 
 .download-button{
-    background: #d60be5;
-    box-shadow: 0 8px 6px -6px #555;
-    transition: all .4s ease;
-    cursor: pointer;
     display: flex;
-    justify-content: center;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
+    justify-content:center ;
+    width: 60px;
+    height: 30px;
+    margin: 5px 6.1px 0 0;
+    /* padding: 9.7px 4.1px 8.3px 3.9px; */
+    text-align: center;
+    border-radius: 6px;
+    background-color: #ff7f00;
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 500;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
 }
 
 .download-button a{
@@ -55,15 +78,20 @@ input[name="insert-text"]{
 }
 
 .share-button{
-    background: #3a0be5;
-    box-shadow: 0 8px 6px -6px #555;
-    transition: all .4s ease;
+    width: 60px;
+    height: 30px;
+    margin: 5px 6.1px 0 0;
+    padding: 9.7px 4.1px 8.3px 3.9px;
+    border-radius: 6px;
+    background-color: #ff7f00;
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+    color: #fff;
+    box-shadow: none;
+    border: none;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
 }
 
 .tools{
@@ -72,22 +100,23 @@ input[name="insert-text"]{
     justify-content: center;
     gap: 10px;
     padding: 10px;
-    width: 186.5px;
+    /* width: 186.5px; */
+    
 }
 
 .basic-buttons{
-    display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    display: flex;
+    flex-direction: row;
     width: 100%;
-    justify-content: center;
+    justify-content: start;
+    margin: 0;
+    gap: 5px;
 }
 
 .extras{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
 }
 
 .text{
@@ -107,6 +136,7 @@ button[name="add-text"]{
     border-radius: 6px;
     background-color: #fff;
     border: 0;
+    margin-top: 0;
     background-image: url('../graphics/add.png');
     background-size: 19.6px 19.6px;
     background-repeat: no-repeat;
@@ -186,4 +216,48 @@ button[name="exit-button"] {
 }
 button[name="exit-button"]:hover{
     opacity: 1;
+}
+
+@media (min-width: 990px) {
+    .editor-container{
+        display: none;
+        width: 100%;
+        height: 300px;
+        background-color: #e3e3e3;
+        
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        padding: 15px;
+        margin-top: 30px;
+    }
+    .tools{
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        /* gap: 10px; */
+        padding: 10px;
+        width: 186.5px;
+        margin-top: 5px;
+    }
+    
+
+    button[name="add-text"]{
+        width: 30px;
+        height: 30px;
+        padding: 5.5px 5.2px 4.9px 5.2px;
+        border-radius: 6px;
+        background-color: #fff;
+        border: 0;
+        background-image: url('../graphics/add.png');
+        background-size: 19.6px 19.6px;
+        background-repeat: no-repeat;
+        background-position-x: 5.2px;
+        background-position-y: 5.2px;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+    .main-canvas{
+        align-self: unset;
+    }
+
 }

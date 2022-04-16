@@ -2,13 +2,14 @@
 @import '../css/header.css';
 @import '../css/editor.css';
 
+
 body{
     background-color: #ffffff;
     margin: 0 auto;
 }
 
 .layout{
-    width: 600px;
+    width: 400px;
 }
 
 .main-container{
@@ -31,16 +32,17 @@ body{
 
 .gallery{
     margin: 0;
-    padding: 13.5px 25px 13.5px 25px;
     display: grid;
-    grid-template-rows: repeat(6, 1fr);
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .img-gallery{
     height: 139px;
     width: 176px;
+    padding: 10px;
     cursor: pointer;
+    border-radius: 5%;
 }
 
 footer{
@@ -67,3 +69,19 @@ small{
     opacity: 0.6;
 }
 
+@media (min-width: 990px) {
+    .layout{
+        width: 600px;
+    }
+    
+    .gallery{
+        padding: 13.5px 25px 13.5px 25px;
+        grid-template-rows: repeat(6, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .img-gallery{
+        padding: 0;
+        
+    }
+}

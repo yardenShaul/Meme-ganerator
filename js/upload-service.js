@@ -10,7 +10,7 @@ function uploadImg() {
         
         document.querySelector('.share-container').innerHTML = `
         <div><a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
-           Share   
+           Click to share on Facebook   
         </a></div>`
     }
     doUploadImg(imgDataUrl, onSuccess);

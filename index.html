@@ -14,6 +14,7 @@
             <form class="search-box">
                 <input type="text" name="search" placeholder="Enter search keywords">
             </form>
+            <p>[Coming soon]</p>
             <div class="keywords"></div>
         </div>
         <div class="main-gallery">
@@ -22,13 +23,16 @@
         <div class="editor-container">
             <button name="exit-button" onclick="onCloseEditor()">X</button>
             <div class="tools">
-                <label>
+                <label class="add-text-container">
                     <input name="insert-text" type="text" placeholder="Type your text" id="insert-text">
-                    <button name="add-text" type="submit" onclick="onSubmitText()"></button>
+                    <div class="upper-buttons">
+                        <button name="swich-button" onclick="onSwicthSelectedText()"></button>
+                        <button name="add-text" type="submit" onclick="onSubmitText()"></button>
+                        <button name="delete-button" onclick="onRemoveText()"></button>
+                        
+                    </div>
                 </label>
                 <div class="basic-buttons">
-                    <button name="delete-button" onclick="onRemoveText()"></button>
-                    <button name="swich-button" onclick="onSwicthSelectedText()"></button>
                     <button name="font+" onclick="onChangeFontSize(this)">A+</button>
                     <button name="font-" onclick="onChangeFontSize(this)">A-</button>                   
                     <label class="color-picker">
@@ -36,9 +40,11 @@
                     </label>
                     
                 </div>
-                <button class="share-button" onclick="uploadImg()">Share on Facebook!</button>
-                <div class="share-container"><div class="user-msg"></div></div>
-                <div class="download-button"><a href="#" onclick="downloadCanvas(this)">Download</a></div>
+                <div class="extras">
+                    <button class="share-button" onclick="uploadImg()">Share</button>
+                    <div class="share-container"><div class="user-msg"></div></div>
+                    <div class="download-button"><a href="#" onclick="downloadCanvas(this)">Download</a></div>
+                </div>
             </div>
             
             <canvas class="main-canvas" style="height: 275.5px; width: 270.5px;" onclick="getCoords(event)"></canvas>

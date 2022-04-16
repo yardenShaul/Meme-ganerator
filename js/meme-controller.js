@@ -90,6 +90,19 @@ function onSubmitText() {
 function onChooseColor(value) {
     console.log(value)
     changeColor(value)
+    renderMeme()
+    setTimeout(() => {
+        if (getMeme().lines.text[1] && getMeme().lines.text[2]) {
+            drawText(getMeme().lines.text[1], gElCanvas.width / 2, 20, getMeme().lines.size)
+            drawText(getMeme().lines.text[2], gElCanvas.width / 2, 130, getMeme().lines.size)
+            if (getMeme().selectedLineIdx === 1) drawText ('_'.repeat(getMeme().lines.text[1].length),gElCanvas.width / 2,20,getMeme().lines.size, true)
+            else if (getMeme().selectedLineIdx === 2) drawText ('_'.repeat(getMeme().lines.text[2].length),gElCanvas.width / 2,130,getMeme().lines.size, true)
+        } else if (getMeme().lines.text[1]) {
+            drawText(getMeme().lines.text[1], gElCanvas.width / 2, 20, getMeme().lines.size)
+        } else {
+            drawText(getMeme().lines.text[0], gElCanvas.width / 2, 20, getMeme().lines.size)
+        }
+    },100)  
 }
 
 function drawText(txt, x, y, fontsize, isUnderLine = false) {
